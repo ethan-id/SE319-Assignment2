@@ -1,13 +1,13 @@
-import './Browse.css';
+import './App.css';
 import { useState, useEffect } from "react";
 import Product from './Product';
 
-function Browse() {
+function App() {
   // view = 1 : browse
   // view = 2 : checkout
   // view = 3 : confirmation
   const [view, setView] = useState(0);
-  const [data, setData] = useState([]); 
+  const [data, setData] = useState([]);
   const [filter, setFilter] = useState("");
 
   useEffect(() => {
@@ -29,14 +29,13 @@ function Browse() {
       </div>
       <div class="productCont">
         {data.filter((element) => {
-          console.log(filter);
           return element.title.toLowerCase().includes(filter);
         }).map((product) => {
           return <Product {...product}/>
         })}
       </div>
-    </div> : view === 1 ? <>Checkout Screen</> : <>Confirmation Screen</>
+    </div> : view === 1 ? <></> : <>Confirmation Screen</>
   );
 }
 
-export default Browse;
+export default App;
