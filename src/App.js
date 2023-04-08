@@ -1,12 +1,15 @@
 import './App.css';
 import { useState, useEffect } from "react";
+import { useDispatch, useSelector } from 'react-redux';
+import { setView } from './reducers/viewSlice';
 import Product from './Product';
 
 function App() {
+  const view = useSelector((state) => (state.view.value));
+  const dispatch = useDispatch();
   // view = 1 : browse
   // view = 2 : checkout
   // view = 3 : confirmation
-  const [view, setView] = useState(0);
   const [data, setData] = useState([]);
   const [filter, setFilter] = useState("");
 
@@ -22,10 +25,11 @@ function App() {
   };
   
   return (
-    view === 0 ? <div className="Browse container">
+    view === 0 ? 
+    <div className="App container">
       <div class="navbar">
         <input onChange={() => {setFilter(document.getElementById("search").value.toLowerCase())}}id="search" class="search" placeholder="Search..."/>
-        <button onClick={() => {setView(1)}} type="button" class="checkout btn btn-primary">Checkout</button>
+        <button onClick={() => {dispatch(setView(1))}} type="button" class="btn btn-primary">Checkout</button>
       </div>
       <div class="productCont">
         {data.filter((element) => {
@@ -34,7 +38,15 @@ function App() {
           return <Product {...product}/>
         })}
       </div>
-    </div> : view === 1 ? <></> : <>Confirmation Screen</>
+    </div> : 
+    view === 1 ? 
+    <div className="App container">
+      <div class="navbar">
+        <button onClick={() => {dispatch(setView(0))}} type="button" class="btn btn-primary">Return</button>
+      </div>
+      
+    </div> : 
+    <>Confirmation Screen</>
   );
 }
 
