@@ -2,3 +2,9 @@
   background-color: #EEE;
   padding: 1vw;
 }
+
+.productCont{
+  display: grid;
+  grid-template-columns: 33% 33% 33%;
+  gap: 1%;
+}

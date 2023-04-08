@@ -3,9 +3,11 @@
 }
 
 .product {
-    margin: 10px;
+    max-width: 28vw;
 }
 
 .image {
     max-width: 15vw;
+    align-self: center;
+    margin: 5px;
 }
