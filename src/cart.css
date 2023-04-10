@@ -1,0 +1,9 @@
+.cartCont {
+    justify-content: center;
+    width: 60vw;
+    margin: auto;
+}
+
+.totalInfo {
+    text-align: right;
+}
