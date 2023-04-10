@@ -1,11 +1,14 @@
-import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { setProductData } from "./reducers/productDataSlice";
 import './product.css';
 
 const Product = (product) => {
-    let [quantity, setQuantity] = useState(0);
+    const dispatch = useDispatch();
+    const data = useSelector((state) => (state.productData.value));
+    const newData = structuredClone(data);
 
     return (
-        <div class="product card shadow-sm">
+        <div key={product.title} class="product card shadow-sm">
             <img src={product.image} class="image" alt={product.title}></img>
             <div class="card-body">
                 <span class="price badge text-bg-primary">{product.price}</span>
@@ -14,13 +17,17 @@ const Product = (product) => {
             </div>
             <div class="card-footer d-flex justify-content-between align-items-center">
                 <div class="btn-group">
-                    <button onClick={() => {setQuantity(quantity+1)}} type="button" class="btn btn btn-outline-secondary">+</button>
                     <button onClick={() => {
-                        if((quantity - 1) >= 0) {
-                            setQuantity(quantity-1)
+                        newData[product.id - 1].quantity++;
+                        dispatch(setProductData(newData));
+                    }} type="button" class="btn btn btn-outline-secondary">+</button>
+                    <button onClick={() => {
+                        if (newData[product.id - 1].quantity - 1 >= 0) {
+                            newData[product.id - 1].quantity--;
                         }
+                        dispatch(setProductData(newData));
                     }} type="button" class="btn btn btn-outline-secondary">-</button>
-                    <button type="button" class="btn btn btn-outline-secondary">{quantity}</button>
+                    <button type="button" class="btn btn btn-outline-secondary">{product["quantity"]}</button>
                 </div>
             </div>
         </div>

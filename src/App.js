@@ -1,27 +1,36 @@
 import './App.css';
-import { useDispatch, useSelector } from 'react-redux';
-import { setView } from './reducers/viewSlice';
+import { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { setProductData } from './reducers/productDataSlice';
 import Browse from './Browse';
+import Cart from './Cart';
 
 function App() {
-  // view = 1 : browse
-  // view = 2 : checkout
-  // view = 3 : confirmation
-  const view = useSelector((state) => (state.view.value));
-  const dispatch = useDispatch();
+    const view = useSelector((state) => (state.view.value));
+    const dispatch = useDispatch();
+
+    const fetchData = async () => {
+        let response = await (
+            await fetch("data.json")
+        ).json();
+        response.forEach((product) => {
+            product["quantity"] = 0;
+        })
+        console.log("fetched product d")
+        dispatch(setProductData((response)));
+    };
+
+    useEffect(() => {
+        fetchData();
+    }, []);
   
-  return (
-    view === 0 ? 
-    <Browse/> : 
-    view === 1 ? 
-    <div className="App container">
-      <div class="navbar">
-        <button onClick={() => {dispatch(setView(0))}} type="button" class="btn btn-primary">Return</button>
-      </div>
-      
-    </div> : 
-    <>Confirmation Screen</>
-  );
+    return (
+      view === 0 ? 
+      <Browse/> : 
+      view === 1 ? 
+      <Cart/> : 
+      <>Confirmation Screen</>
+    );
 }
 
 export default App;
