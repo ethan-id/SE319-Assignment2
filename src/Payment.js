@@ -2,6 +2,43 @@ import "./styles/Payment.css";
 import { useDispatch, useSelector } from "react-redux";
 import { setView } from "./reducers/viewSlice";
 
+function validateClick() {
+    let a = document.getElementById("fname").value;
+    let b = document.getElementById("lname").value;
+    let c = document.getElementById("num").value;
+    let d = document.getElementById("add").value;
+    let f = document.getElementById("city").value;
+    let g = document.getElementById("zip").value;
+    if (a == "") {
+        alert("You have not put in your First Name");
+    }
+    if (b == "") {
+        alert("You have not put in your Last Name");
+    }
+    if (c == "") {
+        alert("You have not put in your Card Number");
+    }
+    if (d == "") {
+        alert("You have not put in your Primary Address");
+    }
+    if (f == "") {
+        alert("You have not put in your City");
+    }
+    if (g == "") {
+        alert("You have not put in your ZIP");
+    }
+    else if (g < 10000) {
+        alert("ZIP is too low to be a real ZIP");
+    }
+    else if (g > 99999) {
+        alert("ZIP is too high to be a real ZIP");
+    }
+    if (a != "" && b != "" && c != "" && d != "" && f != "" && g > 9999 && g < 100000) {
+        alert("You done it!");
+    }
+
+}
+    
 
 
 const Payment = () => {
@@ -45,7 +82,7 @@ const Payment = () => {
                         <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v1H0V4zm0 3v5a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7H0zm3 2h1a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1v-1a1 1 0 0 1 1-1z"/>
                     </svg>
                     </span>
-                    <input type="text" class="form-control" placeholder="1234 - 5678 - 9012 - 3456" aria-label="Username" aria-describedby="basic-addon1" id="numb"/>
+                    <input type="text" class="form-control" placeholder="1234 - 5678 - 9012 - 3456" aria-label="Username" aria-describedby="basic-addon1" id="num"/>
                 </div>
 
                 <div class="col p-3 pb-0">
@@ -127,27 +164,18 @@ const Payment = () => {
 
                     <div class="col">
                         <label>Zip</label>
-                        <input type="text" class="form-control" placeholder="90001" aria-label="Last Name" aria-describedby="basic-addon2" id="zip"/>
+                        <input type="number" class="form-control" placeholder="90001" aria-label="Last Name" aria-describedby="basic-addon2" id="zip" min="10000" max="99999"/>
                     </div>
                 </div>
             </div>
             
-            <button onclick="validate()" class="shadow-lg fs-5 align-self-end w-50 mt-5 btn btn-primary">
+            <button onClick={() => {
+                validateClick();
+            }} class="shadow-lg fs-5 align-self-end w-50 mt-5 btn btn-primary">
                 Confirm Purchase of ${total}
             </button>
         </div>
     );
-}
-
-function validate() {
-    let a = document.getElementById("fname").value;
-    if (a == "John") {
-        alert("You didn't put in your First Name");
-    }
-    else {
-        alert("fuck you");
-    }
-    
 }
   
 export default Payment;
