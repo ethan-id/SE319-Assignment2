@@ -2,6 +2,8 @@ import "./styles/Payment.css";
 import { useDispatch, useSelector } from "react-redux";
 import { setView } from "./reducers/viewSlice";
 
+
+
 const Payment = () => {
     const dispatch = useDispatch();
     const data = useSelector((state) => (state.productData.value));
@@ -13,6 +15,7 @@ const Payment = () => {
     })
     total += (total * 0.07);
     total = total.toFixed(2);
+    localStorage.setItem("total",total);
 
     return (
         <div key="paymentInfo" class="d-flex flex-column container payment">
@@ -24,12 +27,14 @@ const Payment = () => {
                 <div class="row p-3 pb-0">
                     <div class="col">
                         <label>First Name</label>
-                        <input type="text" class="form-control" placeholder="John" aria-label="First Name" aria-describedby="basic-addon2"/>
+                        <input type="text" class="form-control" placeholder="John" aria-label="First Name" aria-describedby="basic-addon2" id="fname"/>
                     </div>
+
+                    <p id="demo"></p>
 
                     <div class="col">
                         <label>Last Name</label>
-                        <input type="text" class="form-control" placeholder="Smith" aria-label="Last Name" aria-describedby="basic-addon2"/>
+                        <input type="text" class="form-control" placeholder="Smith" aria-label="Last Name" aria-describedby="basic-addon2" id="lname"/>
                     </div>
                 </div>
                 
@@ -40,23 +45,23 @@ const Payment = () => {
                         <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v1H0V4zm0 3v5a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7H0zm3 2h1a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1v-1a1 1 0 0 1 1-1z"/>
                     </svg>
                     </span>
-                    <input type="text" class="form-control" placeholder="1234 - 5678 - 9012 - 3456" aria-label="Username" aria-describedby="basic-addon1"/>
+                    <input type="text" class="form-control" placeholder="1234 - 5678 - 9012 - 3456" aria-label="Username" aria-describedby="basic-addon1" id="numb"/>
                 </div>
 
                 <div class="col p-3 pb-0">
                     <label>Address</label>
-                    <input type="text" class="form-control" placeholder="1234 Main St" aria-label="Last Name" aria-describedby="basic-addon2"/>
+                    <input type="text" class="form-control" placeholder="1234 Main St" aria-label="Last Name" aria-describedby="basic-addon2" id="add"/>
                 </div>
 
                 <div class="col p-3 pb-0">
                     <label>Address 2</label>
-                    <input type="text" class="form-control" placeholder="Apartment #, Studio, Floor" aria-label="Last Name" aria-describedby="basic-addon2"/>
+                    <input type="text" class="form-control" placeholder="Apartment #, Studio, Floor" aria-label="Last Name" aria-describedby="basic-addon2" id="add2"/>
                 </div>
 
                 <div class="row p-3 pb-0">
                     <div class="col">
                         <label>City</label>
-                        <input type="text" class="form-control" placeholder="Los Angeles" aria-label="First Name" aria-describedby="basic-addon2"/>
+                        <input type="text" class="form-control" placeholder="Los Angeles" aria-label="First Name" aria-describedby="basic-addon2" id="city"/>
                     </div>
 
                     <div class="col form-group">
@@ -122,18 +127,27 @@ const Payment = () => {
 
                     <div class="col">
                         <label>Zip</label>
-                        <input type="text" class="form-control" placeholder="90001" aria-label="Last Name" aria-describedby="basic-addon2"/>
+                        <input type="text" class="form-control" placeholder="90001" aria-label="Last Name" aria-describedby="basic-addon2" id="zip"/>
                     </div>
                 </div>
             </div>
             
-            <button onClick={() => {
-                dispatch(setView(2));
-            }} class="shadow-lg fs-5 align-self-end w-50 mt-5 btn btn-primary">
+            <button onclick="validate()" class="shadow-lg fs-5 align-self-end w-50 mt-5 btn btn-primary">
                 Confirm Purchase of ${total}
             </button>
         </div>
     );
+}
+
+function validate() {
+    let a = document.getElementById("fname").value;
+    if (a == "John") {
+        alert("You didn't put in your First Name");
+    }
+    else {
+        alert("fuck you");
+    }
+    
 }
   
 export default Payment;

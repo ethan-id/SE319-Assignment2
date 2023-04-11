@@ -31,8 +31,9 @@ function App() {
             <Browse/> : 
         view === 1 ? 
             <Cart/> : 
-            <Confirmation/>
+            <Confirmation/> 
         }
+        
         <footer class="footer mb-3">
             <hr class="mt-5"/>
             <p>Designed and Curated by Ethan Hancock & Christian Deam</p>

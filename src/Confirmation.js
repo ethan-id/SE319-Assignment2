@@ -1,3 +1,4 @@
+import './styles/Confirmation.css';
 import { setProductData } from "./reducers/productDataSlice";
 import { setView } from "./reducers/viewSlice";
 import { useSelector, useDispatch } from "react-redux";
@@ -25,8 +26,17 @@ const Confirmation = () => {
             </div>
 
             {/* add confirmation screen here */}
-            you spent $1 million dollars by purchasing *these* products,
-            Would you like to confirm your order? yes / no
+            You will spend {localStorage.getItem("total")} by purchasing *these* products,
+            Would you like to confirm your order?
+            <span class="br"></span>
+            <button class="button button1" onClick={() => {
+                    dispatch(setView(1));
+                    dispatch(setProductData(newData));
+                }}>Yes</button>
+            <button class="button button2" onClick={() => {
+                    dispatch(setView(0));
+                    dispatch(setProductData(newData));
+                }}>No</button>
         </div>
     );
 }
