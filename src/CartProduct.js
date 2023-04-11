@@ -1,4 +1,4 @@
-import './product.css';
+import './styles/product.css';
 
 const CartProduct = (product) => {
 

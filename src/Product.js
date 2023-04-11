@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { setProductData } from "./reducers/productDataSlice";
-import './product.css';
+import './styles/product.css';
 
 const Product = (product) => {
     const dispatch = useDispatch();

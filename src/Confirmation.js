@@ -25,6 +25,8 @@ const Confirmation = () => {
             </div>
 
             {/* add confirmation screen here */}
+            you spent $1 million dollars by purchasing *these* products,
+            Would you like to confirm your order? yes / no
         </div>
     );
 }

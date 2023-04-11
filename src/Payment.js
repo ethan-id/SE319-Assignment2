@@ -1,4 +1,4 @@
-import "./Payment.css";
+import "./styles/Payment.css";
 import { useDispatch, useSelector } from "react-redux";
 import { setView } from "./reducers/viewSlice";
 

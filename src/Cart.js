@@ -1,4 +1,4 @@
-import "./cart.css";
+import "./styles/cart.css";
 import { useDispatch, useSelector } from 'react-redux';
 import { setView } from './reducers/viewSlice';
 import CartProduct from './CartProduct';
