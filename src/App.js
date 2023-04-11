@@ -25,11 +25,18 @@ function App() {
     }, []);
   
     return (
-      view === 0 ? 
-      <Browse/> : 
-      view === 1 ? 
-      <Cart/> : 
-      <>Confirmation Screen</>
+      <div class="App">
+        {view === 0 ? 
+        <Browse/> : 
+        view === 1 ? 
+        <Cart/> : 
+        <>Confirmation Screen</>}
+        <hr class="mt-5"/>
+        <footer class="footer mb-3">
+            <p>Designed and Curated by Ethan Hancock & Christian Deam</p>
+            <p>Last Updated: 4/10/2023</p>
+        </footer>
+      </div>
     );
 }
 

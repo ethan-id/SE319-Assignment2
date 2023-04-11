@@ -1,4 +1,6 @@
 .App {
+  width: 95vw;
+  margin: auto;
   background-color: #EEE;
   padding: 1vw;
 }
@@ -7,4 +9,28 @@
   display: grid;
   grid-template-columns: 33% 33% 33%;
   gap: 1%;
+}
+
+.footer {
+  color: black
+}
+
+.myNav {
+  border-bottom: 1px solid gray;
+}
+
+.navButton {
+  display: flex;
+  flex-direction: row;
+  padding: 1vw;
+  align-items: center;
+  font-size: 1.3rem;  
+}
+
+.browseIcon {
+  margin-left: 1vw;
+}
+
+.returnIcon {
+  margin-right: 1vw;
 }
