@@ -7,35 +7,59 @@ function validateClick() {
     let b = document.getElementById("lname").value;
     let c = document.getElementById("num").value;
     let d = document.getElementById("add").value;
+    let e = document.getElementById("state").value;
     let f = document.getElementById("city").value;
     let g = document.getElementById("zip").value;
+    let bool = false;
+    let bool2 = true;
     if (a == "") {
         alert("You have not put in your First Name");
+        bool2 = false;
     }
     if (b == "") {
         alert("You have not put in your Last Name");
+        bool2 = false;
     }
     if (c == "") {
         alert("You have not put in your Card Number");
+        bool2 = false;
+    }
+    else if (c < 1000000000000000) {
+        alert("Card Number has too few digits to be real");
+        bool2 = false;
+    }
+    else if (c > 10000000000000000) {
+        alert("Card Number has too many digist to be real");
+        bool2 = false;
     }
     if (d == "") {
         alert("You have not put in your Primary Address");
+        bool2 = false;
     }
     if (f == "") {
         alert("You have not put in your City");
+        bool2 = false;
+    }
+    if (e == "") {
+        alert("You have not put in your State");
+        bool2 = false;
     }
     if (g == "") {
         alert("You have not put in your ZIP");
+        bool2 = false;
     }
     else if (g < 10000) {
         alert("ZIP is too low to be a real ZIP");
+        bool2 = false;
     }
     else if (g > 99999) {
         alert("ZIP is too high to be a real ZIP");
+        bool2 = false;
     }
-    if (a != "" && b != "" && c != "" && d != "" && f != "" && g > 9999 && g < 100000) {
-        alert("You done it!");
+    if (bool2 == true) {
+        bool = true;
     }
+    return bool;
 
 }
     
@@ -82,7 +106,7 @@ const Payment = () => {
                         <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v1H0V4zm0 3v5a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7H0zm3 2h1a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1v-1a1 1 0 0 1 1-1z"/>
                     </svg>
                     </span>
-                    <input type="text" class="form-control" placeholder="1234 - 5678 - 9012 - 3456" aria-label="Username" aria-describedby="basic-addon1" id="num"/>
+                    <input type="number" class="form-control" placeholder="1234567890123456" aria-label="Username" aria-describedby="basic-addon1" id="num"/>
                 </div>
 
                 <div class="col p-3 pb-0">
@@ -170,7 +194,10 @@ const Payment = () => {
             </div>
             
             <button onClick={() => {
-                validateClick();
+                let bool = validateClick();
+                if (bool == true) {
+                    dispatch(setView(2));
+                }
             }} class="shadow-lg fs-5 align-self-end w-50 mt-5 btn btn-primary">
                 Confirm Purchase of ${total}
             </button>

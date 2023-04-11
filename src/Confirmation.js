@@ -2,6 +2,7 @@ import './styles/Confirmation.css';
 import { setProductData } from "./reducers/productDataSlice";
 import { setView } from "./reducers/viewSlice";
 import { useSelector, useDispatch } from "react-redux";
+import CartProduct from './CartProduct';
 
 const Confirmation = () => {
     const data = useSelector((state) => (state.productData.value));
@@ -26,7 +27,17 @@ const Confirmation = () => {
             </div>
 
             {/* add confirmation screen here */}
-            You will spend {localStorage.getItem("total")} by purchasing *these* products,
+            You will spend {localStorage.getItem("total")} by purchasing *these* products
+            {data.filter((element) => {
+                    return element.quantity > 0;
+                }).map((product) => {
+                    return (
+                        <div key={product.title}>
+                            <CartProduct {...product}/>
+                            <hr/>
+                        </div>
+                    );
+                })}
             Would you like to confirm your order?
             <span class="br"></span>
             <button class="button button1" onClick={() => {
