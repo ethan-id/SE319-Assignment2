@@ -27,7 +27,7 @@ function Browse() {
                     {data.filter((element) => {
                         return element.title.toLowerCase().includes(filter);
                     }).map((product) => {
-                        return <Product {...product}/>
+                        return <Product key={product.title} {...product}/>
                     })}
                 </div>
             </div>

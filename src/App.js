@@ -30,8 +30,8 @@ function App() {
         view === 1 ? 
         <Cart/> : 
         <>Confirmation Screen</>}
-        <hr class="mt-5"/>
         <footer class="footer mb-3">
+            <hr class="mt-5"/>
             <p>Designed and Curated by Ethan Hancock & Christian Deam</p>
             <p>Last Updated: 4/10/2023</p>
         </footer>

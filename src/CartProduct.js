@@ -3,7 +3,7 @@ import './product.css';
 const CartProduct = (product) => {
 
     return (
-        <div class="container cartProduct">
+        <div key={product.title} class="container cartProduct">
             <div class="left">
                 <img class="cartImage" src={product.image} alt={product.title}/>
                 <div class="productText">
