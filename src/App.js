@@ -4,10 +4,12 @@ import { useSelector, useDispatch } from 'react-redux';
 import { setProductData } from './reducers/productDataSlice';
 import Browse from './Browse';
 import Cart from './Cart';
+import Confirmation from './Confirmation';
 
 function App() {
     const dispatch = useDispatch();
     const view = useSelector((state) => (state.view.value));
+    const confirm = useSelector((state) => (state.confirm.value));
 
     const fetchData = async () => {
         let response = await (
@@ -26,10 +28,11 @@ function App() {
     return (
       <div class="App">
         {view === 0 ? 
-        <Browse/> : 
+            <Browse/> : 
         view === 1 ? 
-        <Cart/> : 
-        <>Confirmation Screen</>}
+            <Cart/> : 
+            <Confirmation/>
+        }
         <footer class="footer mb-3">
             <hr class="mt-5"/>
             <p>Designed and Curated by Ethan Hancock & Christian Deam</p>

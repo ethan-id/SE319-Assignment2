@@ -1,11 +1,15 @@
 import "./Payment.css";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { setView } from "./reducers/viewSlice";
 
 const Payment = () => {
+    const dispatch = useDispatch();
     const data = useSelector((state) => (state.productData.value));
+
     let total = 0;
     data.map((product) => {
         total += (product.quantity * product.price);
+        return product;
     })
     total += (total * 0.07);
     total = total.toFixed(2);
@@ -123,8 +127,10 @@ const Payment = () => {
                 </div>
             </div>
             
-            <button class="align-self-end w-25 mt-5 btn btn-primary">
-                Confirm Purchase
+            <button onClick={() => {
+                dispatch(setView(2));
+            }} class="shadow-lg fs-5 align-self-end w-50 mt-5 btn btn-primary">
+                Confirm Purchase of ${total}
             </button>
         </div>
     );
