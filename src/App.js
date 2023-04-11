@@ -6,8 +6,8 @@ import Browse from './Browse';
 import Cart from './Cart';
 
 function App() {
-    const view = useSelector((state) => (state.view.value));
     const dispatch = useDispatch();
+    const view = useSelector((state) => (state.view.value));
 
     const fetchData = async () => {
         let response = await (
@@ -15,8 +15,7 @@ function App() {
         ).json();
         response.forEach((product) => {
             product["quantity"] = 0;
-        })
-        console.log("fetched product d")
+        });
         dispatch(setProductData((response)));
     };
 

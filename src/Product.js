@@ -11,7 +11,7 @@ const Product = (product) => {
         <div key={product.title} class="product card shadow-sm">
             <img src={product.image} class="image" alt={product.title}></img>
             <div class="card-body">
-                <span class="price badge text-bg-primary">{product.price}</span>
+                <span class="price badge text-bg-primary">${product.price}</span>
                 <h4>{product.title}</h4>
                 <p class="card-text">{product.description}</p>
             </div>

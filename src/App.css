@@ -22,7 +22,6 @@
 .navButton {
   display: flex;
   flex-direction: row;
-  padding: 1vw;
   align-items: center;
   font-size: 1.3rem;  
 }
