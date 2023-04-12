@@ -26,38 +26,47 @@ const Confirmation = () => {
                 </button>
             </div>
 
-            {/* add confirmation screen here */}
-            You will spend {localStorage.getItem("total")} by purchasing *these* products
-            {data.filter((element) => {
-                    return element.quantity > 0;
-                }).map((product) => {
-                    return (
-                        <div key={product.title}>
-                            <CartProduct {...product}/>
-                            <hr/>
-                        </div>
-                    );
-                })}
-                
-            Would you like to confirm your order?
-            <span class="br"></span>
+            <div class="d-flex flex-row justify-content-between">
+                <div class="col d-flex flex-column my-auto">
+                    <div class="mx-auto h1 my-4 fw-bold">Your total is ${localStorage.getItem("total")}</div>
+                    <div class="mx-auto mb-4 h5"> Would you like to confirm your order?</div>
 
-            <a onClick={() => {
-                pop();
-            }} class="button button1">Yes</a>
-            <div id="box">
-                <h1>Thank you for your purchase!</h1>
-                <p>Your order will be delivered within 5-7 business days!</p>
-                <a onClick={() => {
-                    dispatch(setView(0));
-                    dispatch(setProductData(newData));
-                }} class="close">Close</a>
+                    <div class="row w-50 mx-auto">
+                        <button onClick={() => {
+                            pop();
+                        }} class="btn col btn-primary shadow-lg fs-5 px-5 m-1">Yes</button>
+
+                        <button onClick={() => {
+                                dispatch(setView(0));
+                                dispatch(setProductData(newData));
+                        }} class="btn col btn-secondary shadow-lg fs-5 px-5 m-1">No</button>
+                    </div>
+                </div>
+
+                <div class="w-70">
+                    <div class="h3 fw-bold mt-5 mb-4">Cart Summary </div>
+                    {data.filter((element) => {
+                        return element.quantity > 0;
+                    }).map((product) => {
+                        return (
+                            <div key={product.title}>
+                                <CartProduct {...product}/>
+                                <hr/>
+                            </div>
+                        );
+                    })}
+                </div>
             </div>
 
-            <button class="button button2" onClick={() => {
+            <div class="shadow-lg" id="box">
+                <div class="h1 pb-3">Thank you for your purchase!</div>
+                <p>Your order will be delivered within 5-7 business days.</p>
+                <button onClick={() => {
                     dispatch(setView(0));
                     dispatch(setProductData(newData));
-                }}>No</button>
+                }} class="btn btn-primary ">Close</button>
+            </div>
+
         </div>
     );
     
@@ -65,7 +74,7 @@ const Confirmation = () => {
 
 var c = 0;
 function pop() {
-    if (c == 0) {
+    if (c === 0) {
         document.getElementById("box").style.display = "block";
         c = 1;
     }

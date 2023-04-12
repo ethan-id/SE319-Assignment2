@@ -9,7 +9,6 @@ import Confirmation from './Confirmation';
 function App() {
     const dispatch = useDispatch();
     const view = useSelector((state) => (state.view.value));
-    const confirm = useSelector((state) => (state.confirm.value));
 
     const fetchData = async () => {
         let response = await (
