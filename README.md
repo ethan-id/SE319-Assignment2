@@ -3,14 +3,16 @@
 This project was 'bootstrapped' with [Create React App](https://github.com/facebook/create-react-app).
 It was built with Bootstrap, React, & Redux-Toolkit
 
-## Available Scripts
+## TA Notes
 
 To view the project run:
 
+### `npm i`
 ### `npm start`
 
 This runs the app in the development mode.
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+
 
 ## Authors
   - Christian Deam

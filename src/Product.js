@@ -11,11 +11,11 @@ const Product = (product) => {
         <div key={product.title} class="product card shadow-sm">
             <img src={product.image} class="image" alt={product.title}></img>
             <div class="card-body">
-                <span class="price badge text-bg-primary">${product.price}</span>
+                <span class="price badge text-bg-primary my-2">${product.price}</span>
                 <h4>{product.title}</h4>
                 <p class="card-text">{product.description}</p>
             </div>
-            <div class="card-footer d-flex justify-content-between align-items-center">
+            <div class="card-footer d-flex justify-content-between">
                 <div class="btn-group">
                     <button onClick={() => {
                         newData[product.id - 1].quantity++;
@@ -27,7 +27,7 @@ const Product = (product) => {
                         }
                         dispatch(setProductData(newData));
                     }} type="button" class="btn btn btn-outline-secondary">-</button>
-                    <button type="button" class="btn btn btn-outline-secondary">{product["quantity"]}</button>
+                    <button type="button" class="disabled px-5 btn btn-outline-secondary">{product["quantity"]}</button>
                 </div>
             </div>
         </div>
