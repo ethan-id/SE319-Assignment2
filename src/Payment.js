@@ -195,7 +195,7 @@ const Payment = () => {
             
             <button onClick={() => {
                 let bool = validateClick();
-                if (bool == true) {
+                if (bool === true) {
                     dispatch(setView(2));
                 }
             }} class="shadow-lg fs-5 align-self-end w-50 mt-5 btn btn-primary">
