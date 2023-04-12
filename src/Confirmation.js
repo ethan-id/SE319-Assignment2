@@ -41,17 +41,18 @@ const Confirmation = () => {
                 
             Would you like to confirm your order?
             <span class="br"></span>
-            <button class="button button1" onClick={() => {
-                openPopup();
-            }}>Yes</button>
-            <div class="popup" id="popup">
-                <h2>Thank you!</h2>
-                <p>Your purchase has been confirmed and will be delivered in 5-7 business days!</p>
-                <button type="button"onClick={() => {
+
+            <a onClick={() => {
+                pop();
+            }} class="popup">Show Box</a>
+            <div id="box">
+                <h1>Good Job!</h1>
+                <a onClick={() => {
                     dispatch(setView(0));
                     dispatch(setProductData(newData));
-                }}>Okay!</button>
+                }} class="close">Close</a>
             </div>
+
             <button class="button button2" onClick={() => {
                     dispatch(setView(0));
                     dispatch(setProductData(newData));
@@ -61,10 +62,12 @@ const Confirmation = () => {
     
 }
 
-let popup = document.querySelector("#popup");
-
-function openPopup() {
-    document.body.classList.add("popup");
+var c = 0;
+function pop() {
+    if (c == 0) {
+        document.getElementById("box").style.display = "block";
+        c = 1;
+    }
 }
   
 export default Confirmation;

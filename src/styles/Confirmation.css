@@ -37,43 +37,51 @@
     display: block;
     margin-bottom: 1em;
   }
-  .popup{
-    width: 400px;
-    background: #fff;
-    border-radius: 6px;
+
+  body {
+    margin: 0;
+    padding: 0;
+    background:#ddd;
+    font-family: "Raleway";
+  }
+
+  .popup {
     position: absolute;
-    top: 0%;
-    left: 50%;
-    transform: translate(-50%, -50%) scale(.1);
-    text-align: center;
-    padding: 0 30px 30px;
-    color: #333;
-    visibility: hidden;
-    transition: transform 0.4s, top 0.4s;
-  }
-
-  .popup h2{
-    font-size: 38px;
-    font-weight: 500;
-    margin: 30px 0 10px;
-  }
-
-  .popup button{
-    width: 100%;
-    margin-top: 50px;
-    padding: 10px 0;
-    background: #6fd649;
-    color: #fff;
-    border: 0;
-    outline: none;
-    font-size: 18px;
-    border-radius: 4px;
-    cursor: pointer;
-    box-shadow: 0 5px 5px rgba(0,0,0,.2);
-  }
-
-  .open-popup{
-    visibility: visible;
     top: 50%;
-    transform: translate(-50%, -50%) scale(1);
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #e74c3c;
+    font-size: 20px;
+    color: white;
+    padding: 10px 30px;
+    cursor: pointer;
   }
+  #box {
+    width: 500px;
+    overflow: hidden;
+    background: #f1f1f1;
+    box-shadow: 0 0 20px black;
+    border-radius: 10px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+    padding: 10px;
+    text-align: center;
+    display: none;
+  }
+
+  #box h1{
+    color: #333;
+  }
+  .close {
+    font-size: 20px;
+    color: white;
+    padding: 10px 20px;
+    cursor: pointer;
+    background: #3498db;
+    display: inline-block;
+    border-radius: 4px;
+  }
+
