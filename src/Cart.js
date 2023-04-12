@@ -22,6 +22,7 @@ function Cart() {
 
         <div>
             <div class="cartCont">
+                <div class="h2 fw-bold mb-3">Your Cart</div>
                 {data.filter((element) => {
                     return element.quantity > 0;
                 }).map((product) => {
