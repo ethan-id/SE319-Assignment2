@@ -12,15 +12,15 @@ function validateClick() {
     let g = document.getElementById("zip").value;
     let bool = false;
     let bool2 = true;
-    if (a == "") {
+    if (a === "") {
         alert("You have not put in your First Name");
         bool2 = false;
     }
-    if (b == "") {
+    if (b === "") {
         alert("You have not put in your Last Name");
         bool2 = false;
     }
-    if (c == "") {
+    if (c === "") {
         alert("You have not put in your Card Number");
         bool2 = false;
     }
@@ -32,19 +32,19 @@ function validateClick() {
         alert("Card Number has too many digist to be real");
         bool2 = false;
     }
-    if (d == "") {
+    if (d === "") {
         alert("You have not put in your Primary Address");
         bool2 = false;
     }
-    if (f == "") {
+    if (f === "") {
         alert("You have not put in your City");
         bool2 = false;
     }
-    if (e == "") {
+    if (e === "") {
         alert("You have not put in your State");
         bool2 = false;
     }
-    if (g == "") {
+    if (g === "") {
         alert("You have not put in your ZIP");
         bool2 = false;
     }
@@ -56,7 +56,7 @@ function validateClick() {
         alert("ZIP is too high to be a real ZIP");
         bool2 = false;
     }
-    if (bool2 == true) {
+    if (bool2 === true) {
         bool = true;
     }
     return bool;
