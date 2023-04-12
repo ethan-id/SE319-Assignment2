@@ -44,9 +44,10 @@ const Confirmation = () => {
 
             <a onClick={() => {
                 pop();
-            }} class="popup">Show Box</a>
+            }} class="button button1">Yes</a>
             <div id="box">
-                <h1>Good Job!</h1>
+                <h1>Thank you for your purchase!</h1>
+                <p>Your order will be delivered within 5-7 business days!</p>
                 <a onClick={() => {
                     dispatch(setView(0));
                     dispatch(setProductData(newData));
