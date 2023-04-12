@@ -13,7 +13,10 @@
 }
 
 .cartImage {
-    width: 8vw;
+    width: 6vw;
+    height: 6vw;
+    margin: auto;
+    mix-blend-mode: multiply;
 }
 
 .cartProduct {

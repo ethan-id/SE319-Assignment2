@@ -27,6 +27,20 @@ const Confirmation = () => {
             </div>
 
             <div class="d-flex flex-row justify-content-between">
+                <div class="col container">
+                    <div class="h3 fw-bold mt-5 mb-4">Cart Summary </div>
+                    {data.filter((element) => {
+                        return element.quantity > 0;
+                    }).map((product) => {
+                        return (
+                            <div class="" key={product.title}>
+                                <CartProduct {...product}/>
+                                <hr/>
+                            </div>
+                        );
+                    })}
+                </div>
+
                 <div class="col d-flex flex-column my-auto">
                     <div class="mx-auto h1 my-4 fw-bold">Your total is ${localStorage.getItem("total")}</div>
                     <div class="mx-auto mb-4 h5"> Would you like to confirm your order?</div>
@@ -43,19 +57,7 @@ const Confirmation = () => {
                     </div>
                 </div>
 
-                <div class="w-70">
-                    <div class="h3 fw-bold mt-5 mb-4">Cart Summary </div>
-                    {data.filter((element) => {
-                        return element.quantity > 0;
-                    }).map((product) => {
-                        return (
-                            <div key={product.title}>
-                                <CartProduct {...product}/>
-                                <hr/>
-                            </div>
-                        );
-                    })}
-                </div>
+                
             </div>
 
             <div class="shadow-lg" id="box">
